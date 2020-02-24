@@ -1,0 +1,125 @@
+\documentclass[12pt,a4paper]{report}
+
+%------------------------------------------------------------------------
+% PACKAGES:
+\usepackage{lipsum}
+% Lorem ipsum package
+\usepackage{comment}
+% Allows to comment text out like in C using '#'
+\usepackage{acronym}
+% Allows using acronyms
+\usepackage{styleguide}
+% Define typearea
+% a) Use automatic:
+\usepackage[BCOR1cm]{typearea}
+% b) Or use fixed:
+%\usepackage{geometry}
+%\geometry{left=1.5cm,textwidth=18.5cm,top=1.5cm,textheight=26.5cm}
+\usepackage[american,ngerman]{babel}
+% Use list of tabels, etc. in table of contents:
+\usepackage{tocbibind}
+% German paragraph skip
+\usepackage{parskip}
+% Encoder:????
+\usepackage[latin1]{inputenc}
+%\usepackage[applemac]{inputenc}
+% Use A4-paper efficiently:
+\usepackage{a4wide}
+% Index-generation
+\usepackage{makeidx}
+% Einbinden von URLs:
+\usepackage{url}
+% Include .eps-files (needed also for the logo):
+%\usepackage{epsf}
+% Special \LaTex symbols (e.g. \BibTeX):
+\usepackage{doc}
+% Include Graphic-files:
+%\usepackage{graphics}
+% Include Graphic-files:
+\usepackage{graphicx}
+% Include doc++ generated tex-files:
+%\usepackage{docxx}
+% Include PDF links
+%\usepackage[pdftex, bookmarks=true]{hyperref}
+%------------------------------------------------------------------------
+\graphicspath{{figures/}}
+
+
+%########################################################################
+% CHOOSE DEFAULT LANGUAGE:
+\setlang{de}
+% \setlang{en}
+
+% DATEN EINTRAGEN:
+% FILL IN ACCORDINGLY:
+
+\title{XX}
+\type{B} % / M:Master /B:Bachelor / F:Forschungspraxis / I:Ingenieurspraxis
+\author{XX}
+\matrikelnr{XX}
+\fakultaet{6} % / Nummer der Fakultät - 1...14
+\street{XX}
+\town{XX}
+\advisor{Prof. XX}
+\advisortwo{Prof. XX}
+% Wenn nur ein Betreuer -> Änderung in styleguide.sty -> Zeile 154,208,260 auskommentieren
+\datebegin{Datum des Arbeitsbeginns}
+\dateend{Datum des Vortrags}
+%########################################################################
+
+
+\begin{document}%****************************************************
+
+\makemtgtitle
+% Adding the declaration of independence according to language
+{\ifthenelse{\equal{\lang}{de}}
+	{ \include{ErklaerungDE} } 
+		{ \include{ErklaerungEN} }
+% MAIN PART:
+% Start numbering for pages
+\pagenumbering{roman}
+% German abstract:
+\include{KurzfassungDT}
+% English abstract:
+\include{KurzfassungEN}
+% Table of contents:
+\tableofcontents 
+
+% Introduction (Einleitung):
+\include{Einleitung}
+
+% Text Body (Hauptteil)
+% Could have multiple chaper-files, e.g.:
+\include{Hauptteil}
+%\include{StateOfTheArt}
+%\include{Problem}
+%\include{HowTo}
+%\include{Results}
+%  Conclusions (Zusammenfassung):
+\include{Zusammenfassung}
+% List of figures (Abbildungsverzeichnis):
+% Latex erstellt diese Liste automatisch samt Angaben
+\listoffigures
+% List of tables (Tabellenverzeichnis):
+% Latex erstellt diese Liste automatisch samt Angaben
+\listoftables
+% Glossary (Glossar):
+%\include{Glossary}
+
+% List of formulae (Liste der Formelzeichen):
+% \include{Formulae}
+
+% Appendix (Anhänge), could have multiple chaper-files:
+\appendix
+\include{Anhaenge}
+
+% Abbreviations (Abkürzungsverzeichnis):
+\include{Abkuerzungsverzeichnis}
+
+% References (Literaturverzeichnis):
+% a) Style (with numbers: use unsrt):
+\bibliographystyle{alpha}
+% b) The File:
+\bibliography{Bibliothek}
+
+\end{document} %*****************************************************

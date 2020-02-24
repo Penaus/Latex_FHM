@@ -1,0 +1,272 @@
+\usepackage{ifthen}
+\ifthenelse{\isundefined{\includegraphics}} {\usepackage{graphicx}} {}
+% SOME SETTINGS:
+
+% Pagestyle:
+\pagestyle{headings}
+
+% Avoid 'overhang':
+\sloppy
+
+% Choose default language (de - en)
+\newcommand{\setlang}[1]{
+	\newcommand{\lang}{#1}
+}
+
+% Allows switching languages within the document
+\newcommand{\switchlanguage}[1]{
+	\ifthenelse{\equal{#1}{de}} {\selectlanguage{ngerman}} {\selectlanguage{american}}
+	
+	\nonfrenchspacing
+}
+
+\renewcommand{\title}[1]{ \newcommand{\inserttitle}{#1} }
+
+% Inserts type of paper
+\newcommand{\type}[1]{ \newcommand{\inserttype}
+	{\ifthenelse{\equal{\lang}{de}}
+		{
+			\ifthenelse{\equal{#1}{M}}{ \begin{center} Master-Arbeit \end{center} }
+			{
+				\ifthenelse{\equal{#1}{B}}{ \begin{center} Bachelor-Arbeit \end{center} }
+				{
+					\ifthenelse{\equal{#1}{D}}{ \begin{center} Diplomarbeit \end{center} }
+					{
+						\ifthenelse{\equal{#1}{S}}{ \begin{center} Studienarbeit \end{center} }{#1}
+					}
+				}
+			}																							
+		}
+% engl.
+		{
+			\ifthenelse{\equal{#1}{M}}{ \begin{center} Master Thesis \end{center} }
+			{
+				\ifthenelse{\equal{#1}{B}}{ \begin{center} Bachelor Thesis \end{center} }
+				{
+					\ifthenelse{\equal{#1}{D}}{ \begin{center} Diplomarbeit \end{center} }
+					{
+						\ifthenelse{\equal{#1}{S}}{ \begin{center} Studienarbeit \end{center} }{#1}
+					}
+				}
+			}
+		}
+} }
+
+
+% \begin{comment}
+% Inserts faculty
+\newcommand{\fakultaet}[1]{ \newcommand{\insertfakultaet}
+{\ifthenelse{\equal{\lang}{de}}
+		{
+			\ifthenelse{\equal{#1}{1}}{ \begin{center} Fakult\"at 01 - Architektur \end{center} }
+			{
+				\ifthenelse{\equal{#1}{2}}{ \begin{center} Fakult\"at 02 - Bauingenieurwesen \end{center} }
+				{
+					\ifthenelse{\equal{#1}{3}}{ \begin{center} Fakult\"at 03 - Maschinenbau, Fahrzeugtechnik und Flugzeugtechnik \end{center} }
+					{
+						\ifthenelse{\equal{#1}{4}}{ \begin{center} Fakult\"at 04 - Elektrotechnik und Informationstechnik \end{center} }
+						{
+							\ifthenelse{\equal{#1}{5}}{ \begin{center} Fakult\"at 05 - Versorgungs- und Geb\"audetechnik, Verfahrenstechnik Papier und Verpackung, Druck- und Medientechnik \end{center} }
+							{
+								\ifthenelse{\equal{#1}{6}}{ \begin{center} Fakult\"at 06 - Angewandte Naturwissenschaften und Mechatronik \end{center} }
+								{
+									\ifthenelse{\equal{#1}{7}}{ \begin{center} Fakult\"at 07 - Informatik und Mathematik \end{center} }
+									{
+										\ifthenelse{\equal{#1}{8}}{ \begin{center} Fakult\"at 08 - Geoinformation \end{center} }
+										{
+											\ifthenelse{\equal{#1}{9}}{ \begin{center} Fakult\"at 09 - Wirtschaftsingenieurwesen \end{center} }
+											{
+												\ifthenelse{\equal{#1}{10}}{ \begin{center} Fakult\"at 10 - Betriebswirtschaft \end{center} }
+												{
+													\ifthenelse{\equal{#1}{11}}{ \begin{center} Fakult\"at 11 - Angewandte Sozialwissenschaften \end{center} }
+													{
+														\ifthenelse{\equal{#1}{12}}{ \begin{center} Fakult\"at 12 - Design \end{center} }
+														{
+															\ifthenelse{\equal{#1}{13}}{ \begin{center} Fakult\"at 13 - Studium Generale und Interdisziplin\"are Studien \end{center} }
+															{
+																\ifthenelse{\equal{#1}{14}}{ \begin{center} Fakult\"at 14 - Tourismus \end{center} }{#1}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}																							
+		}
+% engl.
+	{\ifthenelse{\equal{#1}{1}}{ \begin{center} Faculty 01 - Architecture \end{center} }
+		{
+			\ifthenelse{\equal{#1}{2}}{ \begin{center} Faculty 02 - Civil Engineering \end{center} }
+			{
+				\ifthenelse{\equal{#1}{3}}{ \begin{center} Faculty 03 - Mechanical, Automotive and Aeronautical Engineering \end{center} }
+				{
+					\ifthenelse{\equal{#1}{4}}{ \begin{center} Faculty 04 - Electrical Engineering and Information Technology \end{center} }
+					{
+						\ifthenelse{\equal{#1}{5}}{ \begin{center} Faculty 05 - Building Services Engineering, Paper and Packaging Technology and Print and Media Technology \end{center} }
+						{
+							\ifthenelse{\equal{#1}{6}}{ \begin{center} Faculty 06 - Applied Sciences and Mechatronics \end{center} }
+							{
+								\ifthenelse{\equal{#1}{7}}{ \begin{center} Faculty 07 - Computer Science and Mathematics \end{center} }
+								{
+									\ifthenelse{\equal{#1}{8}}{ \begin{center} Faculty 08 - Geoinformatics \end{center} }
+									{
+										\ifthenelse{\equal{#1}{9}}{ \begin{center} Faculty 09 - Engineering and Management \end{center} }
+										{
+											\ifthenelse{\equal{#1}{10}}{ \begin{center} Faculty 10 - Business Administration \end{center} }
+											{
+												\ifthenelse{\equal{#1}{11}}{ \begin{center} Faculty 11 -  Applied Social Sciences \end{center} }
+												{
+													\ifthenelse{\equal{#1}{12}}{ \begin{center} Faculty 12 - Design \end{center} }
+													{
+														\ifthenelse{\equal{#1}{13}}{ \begin{center} Faculty 13 - General and Interdisciplinary Studies \end{center} }
+														{
+															\ifthenelse{\equal{#1}{14}}{ \begin{center} Faculty 14 - Tourism \end{center} }{#1}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}																							
+	}
+} }
+% \end{comment}
+
+
+\renewcommand{\author}[1]{ \newcommand{\insertauthor}{#1} }
+\newcommand{\matrikelnr}[1]{ \newcommand{\insertmatrikelnr}{#1} }
+%\newcommand{\address}[2]{ \newcommand{\insertaddress}{\parbox[t]{12cm}{#1\\#2}} }
+\newcommand{\street}[1]{ \newcommand{\insertstreet}{#1} }
+\newcommand{\town}[1]{ \newcommand{\inserttown}{#1} }
+\newcommand{\advisor}[1]{ \newcommand{\insertadvisor}{#1} }
+\newcommand{\advisortwo}[1]{ \newcommand{\insertadvisortwo}{#1} }
+\newcommand{\datebegin}[1]{ \newcommand{\insertdatebegin}{#1} }
+\newcommand{\dateend}[1]{ \newcommand{\insertdateend}{#1} }
+
+
+% TITLE #######################################################################
+\newcommand{\makemtgtitle}
+{
+
+\thispagestyle{empty}
+\newpage
+
+\ifthenelse{\equal{\lang}{de}}{
+% GERMAN TITLEPAGE ------------------
+\vspace{5cm}
+\begin{center}
+% Inserts HM logo into first page
+     \includegraphics[width=10cm]{figures/Hochschule_Muenchen_Logo}
+\end{center}
+
+\begin{center} {
+				\sf
+                \Large  Hochschule f\"ur angewandte Wissenschaften M\"unchen
+                \smallskip 
+
+                % \Large    
+				{ \begin{center} \insertfakultaet \end{center} }
+                \smallskip
+               }
+
+\end{center}
+
+\vspace{4cm}
+
+\begin{center}
+        {\bf\Huge \inserttype} 
+\end{center}
+
+\begin{center}
+        \vspace{.4cm}
+        {\LARGE 
+        \inserttitle
+        }
+\end{center}
+\vfill         
+{
+\begin{center}
+	\setlength{\baselineskip}{0.2cm}
+	\large\begin{tabular}{rl}
+	Autor: &  \insertauthor\\
+	Matrikelnummer: & \insertmatrikelnr\\
+	Anschrift: & \insertstreet\\
+			   & \inserttown \\
+	Erstbetreuer: & \insertadvisor\\
+  	Zweitbetreuer: & \insertadvisortwo\\
+	Beginn: & \insertdatebegin\\
+	Abgabe: & \insertdateend
+	\end{tabular}
+\end{center}
+}
+% Independence and License statements
+% \include{ErklaerungDE}
+
+}{
+% ENGLISH TITLEPAGE -----------------
+\vspace{5cm}
+\begin{center}
+%    \includegraphics[width=4cm]{TUMLogo_oZ_Outline_schwarz_CMYK}
+     \includegraphics[width=10cm]{figures/Hochschule_Muenchen_Logo}
+\end{center}
+
+\begin{center} {
+				\sf 
+                \Large  University of applied Sciences Munich
+                \smallskip
+                
+                % \Large Faculty 
+                \insertfakultaet 
+                \smallskip
+                              }
+
+%              {\sf \large Prof. Dr.-Ing. Eckehard Steinbach} 
+\end{center}
+
+\vspace{4cm}
+
+\begin{center}
+        {\bf\Huge \inserttype} 
+\end{center}
+
+\begin{center}
+        \vspace{.4cm}
+        {\LARGE 
+        \inserttitle
+        }
+\end{center}
+\vfill         
+{
+\begin{center}
+	\setlength{\baselineskip}{0.2cm}
+	\large\begin{tabular}{ll}
+	Author: &  \insertauthor\\
+	Matriculation Number: & \insertmatrikelnr\\
+	Address: & \insertstreet\\
+					 & \inserttown\\
+	Advisor: & \insertadvisor\\
+    Advisor Two: & \insertadvisortwo\\
+	Begin: & \insertdatebegin\\
+	End: & \insertdateend
+	\end{tabular}
+\end{center}
+}
+% Independence and License statements
+% \include{ErklaerungEN}
+
+}
+
+}
+%##############################################################################
